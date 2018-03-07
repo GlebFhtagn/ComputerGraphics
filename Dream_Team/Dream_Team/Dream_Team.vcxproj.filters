@@ -15,34 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\geometry.h">
+    <ClInclude Include="geometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\model.h">
+    <ClInclude Include="model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\Painter.h">
+    <ClInclude Include="Painter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\tgaimage.h">
+    <ClInclude Include="tgaimage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\model.cpp">
+    <ClCompile Include="model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\Painter.cpp">
+    <ClCompile Include="Painter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\Source.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\tgaimage.cpp">
+    <ClCompile Include="tgaimage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\output.tga" />
+    <Image Include="output.tga" />
   </ItemGroup>
 </Project>

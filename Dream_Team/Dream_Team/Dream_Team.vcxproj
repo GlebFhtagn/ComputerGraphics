@@ -18,6 +18,21 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="geometry.h" />
+    <ClInclude Include="model.h" />
+    <ClInclude Include="Painter.h" />
+    <ClInclude Include="tgaimage.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="model.cpp" />
+    <ClCompile Include="Painter.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="tgaimage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="output.tga" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{24FDC080-4407-47DB-8BE1-70CCD9FE3EBB}</ProjectGuid>
     <RootNamespace>Dream_Team</RootNamespace>
@@ -109,21 +124,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\geometry.h" />
-    <ClInclude Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\model.h" />
-    <ClInclude Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\Painter.h" />
-    <ClInclude Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\tgaimage.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\model.cpp" />
-    <ClCompile Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\Painter.cpp" />
-    <ClCompile Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\Source.cpp" />
-    <ClCompile Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\tgaimage.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\Repos\ComuterGraphicsLab\CG_OP_TEAM\CG_OP_TEAM\output.tga" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
