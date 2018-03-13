@@ -4,6 +4,7 @@
 #include <string>
 
 Model::Model(const char* path) {
+
 	std::ifstream input(path);
 	std::string str;
 	Point3dF point3d;
@@ -100,3 +101,4 @@ std::vector<Point3dF> Model::verts(Point3dI i)
 	v.push_back(vertices.at(i.z));
 	return v;
 }
+
