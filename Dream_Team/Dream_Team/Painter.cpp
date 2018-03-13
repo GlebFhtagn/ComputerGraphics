@@ -76,12 +76,12 @@ void Painter::lineWu(Point2dF p0, Point2dF p1, PNGColor color)
 	int sy = (p1.y > p0.y ? 1 : -1);
 	for (int x = p0.x; x <= p1.x; x++) {
 		if (!steep) {
-			image->setPixel(x, y, PNGColor(255 , 255 * (1 - error), 255 * (1 - error), 255 * (1 - error)));
-			image->setPixel(x, y + sy, PNGColor(255, 255 * error, 255 * error, 255 * error));
+			image->setPixel(x, y, color * (1-error) );
+			image->setPixel(x, y + sy, color * error);
 		}
 		else {
-			image->setPixel(y, x, PNGColor(255, 255 * (1 - error), 255 * (1 - error), 255 * (1 - error)));
-			image->setPixel(y + sy, x, PNGColor(255 , 255 * error, 255 * error, 255 * error));
+			image->setPixel(y, x, color * (1 - error));
+			image->setPixel(y + sy, x, color * error);
 		}
 		error += derror;
 		if (error > 1.0) {

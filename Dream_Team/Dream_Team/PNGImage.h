@@ -11,6 +11,7 @@ struct PNGColor
 	PNGColor();
 	PNGColor(unsigned char _a, unsigned char _r, unsigned char _g, unsigned char _b);
 	PNGColor(unsigned char _r, unsigned char _g, unsigned char _b);
+	friend PNGColor & operator*(const PNGColor & color, const float a);
 };
 enum PNGType
 {
