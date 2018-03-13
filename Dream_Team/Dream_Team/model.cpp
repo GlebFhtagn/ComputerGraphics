@@ -64,6 +64,7 @@ Model::Model(const char* path) {
 		}
 		std::getline(input,str);
 	}
+	input.close();
 }
 
 int Model::vertsSize()
