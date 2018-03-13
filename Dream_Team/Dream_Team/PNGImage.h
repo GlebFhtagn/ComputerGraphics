@@ -19,14 +19,18 @@ enum PNGType
 class PNGImage
 {
 public:
-	PNGImage(unsigned char _width, unsigned char _height, PNGType type);
+	PNGImage(int _width, int _height, PNGType type);
 	~PNGImage();
 	void openImage(const char* path);
 	void saveImage(const char* path);
 	void setPixel(int i, int j, PNGColor color);
+	int get_width();
+	int get_height();
+	void rotate();
 private:
 	std::vector<unsigned char> data;
 	int width;
 	int heigth;
+	void swap_pixels();
 };
 

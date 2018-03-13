@@ -6,18 +6,18 @@
 
 const char* dir = "obj/african_head.obj";
 
-const TGAColor white = TGAColor(255, 255, 255, 255);
-const TGAColor red = TGAColor(255, 0, 0, 255);
+const PNGColor white = PNGColor(255, 255, 255, 255);
+const PNGColor red = PNGColor(255, 0, 0, 255);
 const int width = 800;
 const int height = 800;
-TGAImage* image = NULL;
+PNGImage* image = NULL;
 
 int main() {
 
 		Model model(dir);
 		std::cout << "#vert " << model.vertsSize() << " #faces " << model.facesSize() << std::endl;
 
-		image = new TGAImage(width, height, TGAImage::RGB);
+		image = new PNGImage(width, height,PNGType::RGB);
 		Painter paint(image);
 
 		for (int i = 0; i < model.facesSize(); i++) {
@@ -30,8 +30,9 @@ int main() {
 			paint.lineWu(start,end,white);
 		}*/
 
-		image->flip_vertically();
-		image->write_tga_file("output.tga");
+		//image->flip_vertically();
+		image->rotate();
+		image->saveImage("output.png");
 
 	system("pause");
 

@@ -1,7 +1,7 @@
 #include "PNGImage.h"
 
 
-PNGImage::PNGImage(unsigned char _width, unsigned char _height, PNGType type)
+PNGImage::PNGImage(int _width, int _height, PNGType type)
 {
 	width = _width;
 	heigth = _height;
@@ -17,6 +17,8 @@ void PNGImage::openImage(const char * path)
 {
 	
 }
+
+
 
 void PNGImage::saveImage(const char * path)
 {
@@ -35,11 +37,46 @@ void PNGImage::saveImage(const char * path)
 
 void PNGImage::setPixel(int i, int j, PNGColor color)
 {
-	int id=i*width*4+j*4;
-	data[id] = color.a;
-	data[id + 1] = color.r;
-	data[id + 2] = color.g;
-	data[id + 3] = color.b;
+	if (!((i >= 0 && i < width) && (j >= 0 && j < heigth))) return;
+	// int id1 = i*width * 4 + j * 4;
+	int id= (heigth - j - 1)*heigth* 4 + i * 4;
+	data[id] = color.r;
+	data[id + 1] = color.g;
+	data[id + 2] = color.b;
+	data[id + 3] = color.a;
+}
+
+int PNGImage::get_width()
+{
+	return width;
+}
+
+int PNGImage::get_height()
+{
+	return heigth;
+}
+
+void PNGImage::rotate()
+{
+	//swap_pixels();
+}
+
+void PNGImage::swap_pixels()
+{
+	std::vector<unsigned char> vec_buff(heigth*width*4);
+	for (int i = 0; i < width; i++)
+	{
+		for (int j = 0; j < heigth ; j++)
+		{
+			int id1 = i*width * 4 + j * 4;
+			int id2 = (heigth-j-1)*heigth * 4 + i * 4;
+			vec_buff[id2] = data[id1];
+			vec_buff[id2+1] = data[id1+1];
+			vec_buff[id2+2] = data[id1+2];
+			vec_buff[id2+3] = data[id1+3];
+		}
+	}
+	data = vec_buff;
 }
 
 PNGColor::PNGColor()
@@ -60,7 +97,7 @@ PNGColor::PNGColor(unsigned char _a, unsigned char _r, unsigned char _g, unsigne
 
 PNGColor::PNGColor(unsigned char _r, unsigned char _g, unsigned char _b)
 {
-	a = 0;
+	a = 255;
 	r = _r;
 	g = _g;
 	b = _b;

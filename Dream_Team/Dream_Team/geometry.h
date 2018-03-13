@@ -27,7 +27,7 @@ template <class t>struct  Point2d {
 		Point2d<t> newPoint(p.x * a, p.y * a);
 		return newPoint;
 	}
-	t & operator^(const Point2d & a, const Point2d & b)
+	friend t & operator^(const Point2d & a, const Point2d & b)
 	{
 		return (a.x * b.x + a.y * b.y);
 	}
@@ -47,19 +47,19 @@ template <class t>struct Point3d {
 		return input;
 	}
 
-	Point3d & operator+(const Point3d & a, const Point3d & b)
+	friend Point3d & operator+(const Point3d & a, const Point3d & b)
 	{
 		Point3d p(a.x + b.x, a.y + b.y, a.z + b.z);
 		return p;
 	}
 
-	Point3d & operator*(const Point3d & a, const double & b)
+	friend Point3d & operator*(const Point3d & a, const double & b)
 	{
 		Point3d p(a.x*b, a.y*b, a.z*b);
 		return p;
 	}
 
-	t & operator^(const Point3d & a, const Point3d & b)
+	friend t & operator^(const Point3d & a, const Point3d & b)
 	{
 		return (a.x * b.x + a.y * b.y + a.z * b.z);
 	}
@@ -74,3 +74,9 @@ typedef Point2d<int> Point2dI;
 typedef Point2d<float> Point2dF;
 typedef Point3d<int> Point3dI;
 typedef Point3d<float> Point3dF;
+
+struct Triangle {
+	Point3dF a, b, c;
+	Triangle():a(0,0,0), b(0,0,0), c(0,0,0) {};
+	Triangle(Point3dF _a, Point3dF _b, Point3dF _c) : a(_a.x,_a.y,_a.z), b(_b.x,_b.y,_b.z), c(_c.x,_c.y,_c.z) {};
+};

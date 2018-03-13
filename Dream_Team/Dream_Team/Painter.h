@@ -2,18 +2,19 @@
 #include "geometry.h"
 #include "tgaimage.h"
 #include <cmath>
+#include "PNGImage.h"
 
 class Painter
 {
 public:
-	Painter(TGAImage* _image);
+	Painter(PNGImage* _image);
 	~Painter();
-	void line(Point2dF p0, Point2dF p1, TGAColor color);
-	void lineB(Point2dF p0, Point2dF p1, TGAColor color);
-	void lineWu(Point2dF p0, Point2dF p1, TGAColor color);
-	void polygon(std::vector<Point3dF> v, TGAColor color, float scaleX, float scaleY);
+	void line(Point2dF p0, Point2dF p1, PNGColor color);
+	void lineB(Point2dF p0, Point2dF p1, PNGColor color);
+	void lineWu(Point2dF p0, Point2dF p1, PNGColor color);
+	void polygon(std::vector<Point3dF> v, PNGColor color, float scaleX, float scaleY);
 private: 
-	TGAImage* image;
+	PNGImage* image;
 	Point2dF centre;
 };
 
