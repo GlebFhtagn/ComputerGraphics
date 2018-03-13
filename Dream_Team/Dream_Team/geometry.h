@@ -27,6 +27,10 @@ template <class t>struct  Point2d {
 		Point2d<t> newPoint(p.x * a, p.y * a);
 		return newPoint;
 	}
+	t & operator^(const Point2d & a, const Point2d & b)
+	{
+		return (a.x * b.x + a.y * b.y);
+	}
 };
 template <class t>struct Point3d {
 	t x;
@@ -42,6 +46,24 @@ template <class t>struct Point3d {
 		input >> point.x >> point.y >> point.z;
 		return input;
 	}
+
+	Point3d & operator+(const Point3d & a, const Point3d & b)
+	{
+		Point3d p(a.x + b.x, a.y + b.y, a.z + b.z);
+		return p;
+	}
+
+	Point3d & operator*(const Point3d & a, const double & b)
+	{
+		Point3d p(a.x*b, a.y*b, a.z*b);
+		return p;
+	}
+
+	t & operator^(const Point3d & a, const Point3d & b)
+	{
+		return (a.x * b.x + a.y * b.y + a.z * b.z);
+	}
+
 	Point2d<t> from3dTo2d() {
 		Point2d<t> to2d(x, y);
 		return to2d;
