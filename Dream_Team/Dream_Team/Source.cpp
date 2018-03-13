@@ -12,19 +12,8 @@ const int width = 800;
 const int height = 800;
 TGAImage* image = NULL;
 
-bool exists_test1(const char* name) {
-	if (FILE *file = fopen(name, "r")) {
-		fclose(file);
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
 int main() {
 
-	if (exists_test1(dir)) {
 		Model model(dir);
 		std::cout << "#vert " << model.vertsSize() << " #faces " << model.facesSize() << std::endl;
 
@@ -43,10 +32,7 @@ int main() {
 
 		image->flip_vertically();
 		image->write_tga_file("output.tga");
-	}
-	else {
-		std::cout << "No such file \n";
-	}
+
 	system("pause");
 
 	return 0;
