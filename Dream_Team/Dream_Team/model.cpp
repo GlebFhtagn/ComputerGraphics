@@ -102,17 +102,21 @@ std::vector<Point3dF> Model::verts(Point3dI i)
 	return v;
 }
 
-Triangle Model::getTriangle(int i)
+Triangle Model::getTriangle(int i, float scaleX, float scaleY)
 {
 	std::vector<Point3dF> v = verts(face(i).at(0));
+	for (int i = 0; i < 3; i++) {
+		v.at(i).x *= scaleX;
+		v.at(i).y *= scaleY;
+	}
 	return Triangle(v.at(0), v.at(1), v.at(2));
 }
 
-std::vector<Triangle> Model::getTriangles()
+std::vector<Triangle> Model::getTriangles(float scaleX, float scaleY)
 {
 	std::vector<Triangle> triangles;
 	for (int i = 0; i < faces.size(); i++) {
-		triangles.push_back(getTriangle(i));
+		triangles.push_back(getTriangle(i,scaleX,scaleY));
 	}
 }
 
