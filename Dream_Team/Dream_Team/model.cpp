@@ -118,6 +118,6 @@ std::vector<Triangle> Model::getTriangles(float scaleX, float scaleY)
 	for (int i = 0; i < faces.size(); i++) {
 		triangles.push_back(getTriangle(i,scaleX,scaleY));
 	}
-	return triangles
+	return triangles;
 }
 
