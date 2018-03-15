@@ -17,6 +17,7 @@ private:
 	std::vector<float> get_barycentric_coordinates(Triangle triangle,int x,int y);
 	int max_of_three(int x,int y,int z);
 	int min_of_three(int x, int y, int z);
+
 	float* zBuffer;
 };
 
