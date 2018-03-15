@@ -10,8 +10,8 @@ public:
 	int tvertSize();
 	std::vector<Point3dI> face(int i);
 	std::vector<Point3dF> verts(Point3dI i);
-	Triangle getTriangle(int i);
-	std::vector<Triangle> getTriangles();
+	Triangle getTriangle(int i, float scaleX, float scaleY);
+	std::vector<Triangle> getTriangles(float scaleX, float scaleY);
 
 private:
 	std::vector<Point3dF> vertices;
