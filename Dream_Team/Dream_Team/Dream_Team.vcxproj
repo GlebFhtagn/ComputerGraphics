@@ -24,6 +24,7 @@
     <ClInclude Include="model.h" />
     <ClInclude Include="Painter.h" />
     <ClInclude Include="PNGImage.h" />
+    <ClInclude Include="Render.h" />
     <ClInclude Include="tgaimage.h" />
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +32,7 @@
     <ClCompile Include="model.cpp" />
     <ClCompile Include="Painter.cpp" />
     <ClCompile Include="PNGImage.cpp" />
+    <ClCompile Include="Render.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="tgaimage.cpp" />
   </ItemGroup>
