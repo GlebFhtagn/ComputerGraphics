@@ -102,3 +102,9 @@ std::vector<Point3dF> Model::verts(Point3dI i)
 	return v;
 }
 
+Triangle Model::getTriangle(int i)
+{
+	std::vector<Point3dF> v=verts(face(i).at(0));
+	return Triangle(v.at(0), v.at(1), v.at(2));
+}
+

@@ -64,6 +64,11 @@ template <class t>struct Point3d {
 		return (a.x * b.x + a.y * b.y + a.z * b.z);
 	}
 
+	friend Point3d<t> & operator/(const Point3d & a, const Point3d & b)
+	{
+		return Point3d(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x);
+	}
+
 	Point2d<t> from3dTo2d() {
 		Point2d<t> to2d(x, y);
 		return to2d;

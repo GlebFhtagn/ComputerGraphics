@@ -5,10 +5,15 @@
 class Render
 {
 public:
-	Render(PNGImage* _image, std::vector<std::vector<Point3dF>> _polygons);
+	Render(PNGImage* _image, std::vector<Triangle> _polygons);
 	~Render();
+
+	void backfaceCulling();
+	void withZBuffer();
 private:
 	PNGImage* image;
-	std::vector<std::vector<Point3dF>> polygons;
+	std::vector<Triangle> polygons;
+
+	float* zBuffer;
 };
 
