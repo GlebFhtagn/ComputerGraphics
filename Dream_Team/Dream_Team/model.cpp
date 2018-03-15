@@ -108,3 +108,11 @@ Triangle Model::getTriangle(int i)
 	return Triangle(v.at(0), v.at(1), v.at(2));
 }
 
+std::vector<Triangle> Model::getTriangles()
+{
+	std::vector<Triangle> triangles;
+	for (int i = 0; i < faces.size(); i++) {
+		triangles.push_back(getTriangle(i));
+	}
+}
+
