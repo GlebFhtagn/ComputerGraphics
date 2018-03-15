@@ -18,7 +18,7 @@ int main() {
 		Model model(dir);
 		std::cout << "#vert " << model.vertsSize() << " #faces " << model.facesSize() << std::endl;
 
-		image = new PNGImage(width, height,PNGType::RGB);
+		image = new PNGImage(width, height, PNGType::RGB);
 		Painter paint(image);
 
 		for (int i = 0; i < model.facesSize(); i++) {
