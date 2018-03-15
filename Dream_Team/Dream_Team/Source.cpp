@@ -21,11 +21,9 @@ int main() {
 
 		image = new PNGImage(width, height, PNGType::RGB);
 		//Painter paint(image);
-		Render render = Render(image,model.getTriangles());
-		for (int i = 0; i < model.facesSize(); i++) {
+		Render render = Render(image,model.getTriangles(width/2,height/2));
 			//paint.polygon(model.verts(model.face(i).at(0)),red , width / 2, height /2);
 			render.Draw_triangle();
-		}
 
 		/*Point2dF start(width / 2, height / 2);
 		for (int i = 1; i < 18; i++){

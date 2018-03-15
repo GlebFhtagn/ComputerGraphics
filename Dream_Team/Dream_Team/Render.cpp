@@ -83,11 +83,20 @@ std::vector<float> Render::get_barycentric_coordinates(Triangle triangle,int x,i
 	int x2 = triangle.c.x;
 	int y2 = triangle.c.y;
 	std::vector<float> res(3);
-	l = ((y - y2)*(x1 - x2) - (x - x2)*(y1 - y2)) / ((y0 - y2)*(x1 - x2) - (x0 - x2)*(y1 - y2));
-	res[0] = l;
-	l = ((y - y2)*(x2 - x0) - (x - x0)*(y2 - y0)) / ((y1 - y0)*(x2 - x0) - (x1 - x0)*(y2 - y0));
-	res[1] = l;
-	l = ((y - y1)*(x0 - x1) - (x - x1)*(y0 - y1)) / ((y2 - y1)*(x0 - x1) - (x2 - x1)*(y0 - y1));
-	res[2] = l;
+	if (triangle.a.from3dTo2d() != triangle.b.from3dTo2d() && triangle.a.from3dTo2d() != triangle.c.from3dTo2d() && triangle.b.from3dTo2d() != triangle.c.from3dTo2d())
+	{
+		l = ((y - y2)*(x1 - x2) - (x - x2)*(y1 - y2)) / ((y0 - y2)*(x1 - x2) - (x0 - x2)*(y1 - y2));
+		res[0] = l;
+		l = ((y - y2)*(x2 - x0) - (x - x0)*(y2 - y0)) / ((y1 - y0)*(x2 - x0) - (x1 - x0)*(y2 - y0));
+		res[1] = l;
+		l = ((y - y1)*(x0 - x1) - (x - x1)*(y0 - y1)) / ((y2 - y1)*(x0 - x1) - (x2 - x1)*(y0 - y1));
+		res[2] = l;
+	}
+	else
+	{
+		res[0] = -1;
+		res[1] = -1;
+		res[2] = -1;
+	}
 	return res;
 }
