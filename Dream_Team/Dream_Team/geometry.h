@@ -31,6 +31,15 @@ template <class t>struct  Point2d {
 	{
 		return (a.x * b.x + a.y * b.y);
 	}
+	friend bool & operator==(const Point2d & a, const Point2d & b)
+	{
+		return (a.x == b.x&&a.y == b.y);
+	}
+
+	friend bool & operator!=(const Point2d & a, const Point2d & b)
+	{
+		return (a.x != b.x||a.y != b.y);
+	}
 };
 template <class t>struct Point3d {
 	t x;
