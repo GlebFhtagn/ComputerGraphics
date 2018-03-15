@@ -38,8 +38,8 @@ void PNGImage::saveImage(const char * path)
 void PNGImage::setPixel(int i, int j, PNGColor color)
 {
 	if (!((i >= 0 && i < width) && (j >= 0 && j < heigth))) return;
-	 int id = i*heigth * 4 + j * 4;
-	//int id= (heigth - j - 1)*heigth* 4 + i * 4;
+	//int id = i*heigth * 4 + j * 4;
+	int id= (heigth - j - 1)*heigth* 4 + i * 4;
 	data[id] = color.r;
 	data[id + 1] = color.g;
 	data[id + 2] = color.b;
