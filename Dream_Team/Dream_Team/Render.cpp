@@ -13,25 +13,29 @@ Render::~Render()
 	delete image;
 }
 
-void Render::Draw_triangle(Triangle triangle)
-{
-	PNGColor color(rand() % 256,rand() % 256,rand() % 256);
-	int max_x, min_x, max_y, min_y;
-	max_x = max_of_three(triangle.a.x, triangle.b.x, triangle.c.x);
-	min_x = min_of_three(triangle.a.x, triangle.b.x, triangle.c.x);
-	max_y = max_of_three(triangle.a.y, triangle.b.y, triangle.c.y);
-	min_y = min_of_three(triangle.a.y, triangle.b.y, triangle.c.y);
-	for (int i = min_x; i <= max_x; i++)
+void Render::Draw_triangle()
+{	
+	for (int i = 0; i < polygons.size(); i++)
 	{
-		for (int j = min_y; j <= max_y; j++)
+		
+		PNGColor color(rand() % 256, rand() % 256, rand() % 256);
+		int max_x, min_x, max_y, min_y;
+		max_x = max_of_three(polygons.at(i).a.x, polygons.at(i).b.x, polygons.at(i).c.x);
+		min_x = min_of_three(polygons.at(i).a.x, polygons.at(i).b.x, polygons.at(i).c.x);
+		max_y = max_of_three(polygons.at(i).a.y, polygons.at(i).b.y, polygons.at(i).c.y);
+		min_y = min_of_three(polygons.at(i).a.y, polygons.at(i).b.y, polygons.at(i).c.y);
+		for (int i = min_x; i <= max_x; i++)
 		{
-			std::vector<float> bar_coord(3);
-			bar_coord = get_barycentric_coordinates(triangle, i, j);
-			if (bar_coord[0] >= 0 && bar_coord[1] >= 0 && bar_coord[2] >= 0)
+			for (int j = min_y; j <= max_y; j++)
 			{
-				image->setPixel(i, j, color);
-			}
+				std::vector<float> bar_coord(3);
+				bar_coord = get_barycentric_coordinates(polygons.at(i), i, j);
+				if (bar_coord[0] >= 0 && bar_coord[1] >= 0 && bar_coord[2] >= 0)
+				{
+					image->setPixel(i, j, color);
+				}
 
+			}
 		}
 	}
 }

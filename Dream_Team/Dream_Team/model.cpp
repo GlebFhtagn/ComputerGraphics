@@ -114,5 +114,6 @@ std::vector<Triangle> Model::getTriangles()
 	for (int i = 0; i < faces.size(); i++) {
 		triangles.push_back(getTriangle(i));
 	}
+	return triangles;
 }
 

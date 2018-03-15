@@ -7,7 +7,7 @@ class Render
 public:
 	Render(PNGImage* _image, std::vector<Triangle> _polygons);
 	~Render();
-	void Draw_triangle(Triangle triangle);
+	void Draw_triangle();
 
 	void backfaceCulling();
 	void withZBuffer();
