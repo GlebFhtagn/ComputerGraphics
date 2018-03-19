@@ -62,5 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="output.tga" />
+    <Image Include="output.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

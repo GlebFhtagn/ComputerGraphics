@@ -46,6 +46,11 @@ void PNGImage::setPixel(int i, int j, PNGColor color)
 	data[id + 3] = color.a;
 }
 
+PNGColor PNGImage::getColor(int i, int j)
+{
+	return PNGColor();
+}
+
 int PNGImage::get_width()
 {
 	return width;
@@ -103,7 +108,7 @@ PNGColor::PNGColor(unsigned char _r, unsigned char _g, unsigned char _b)
 	b = _b;
 }
 
-PNGColor & operator*(const PNGColor & color, const float a)
+PNGColor  operator*(const PNGColor & color, const float a)
 {
 	return PNGColor(color.a * a,color.r,color.g,color.b);
 }

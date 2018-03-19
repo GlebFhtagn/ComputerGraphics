@@ -1,23 +1,27 @@
 #pragma once
 #include "PNGImage.h"
 #include "geometry.h"
+#include "model.h"
+#define _USE_MATH_DEFINES
+#include <cmath>  
 
 class Render
 {
 public:
-	Render(PNGImage* _image, std::vector<Triangle> _polygons);
+	Render(PNGImage* _image, Model* _model);
 	~Render();
-	void Draw_triangle();
 
-	void backfaceCulling();
-	void withZBuffer();
+	void setCamera(Point3dF _v);
+	void setImage(PNGImage* _image);
+	void setModel(Model* _model);
+	void setLight(Point3dF _light);
+	void renderScene();
+
 private:
 	PNGImage* image;
-	std::vector<Triangle> polygons;
-	std::vector<float> get_barycentric_coordinates(Triangle triangle,int x,int y);
-	int max_of_three(int x,int y,int z);
-	int min_of_three(int x, int y, int z);
-
+	Model* model;
+	Point3dF v;
+	Point3dF light;
 	float* zBuffer;
 };
 

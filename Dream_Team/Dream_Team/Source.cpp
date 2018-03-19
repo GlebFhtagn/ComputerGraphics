@@ -16,21 +16,17 @@ PNGImage* image = NULL;
 
 int main() {
 
-		Model model(dir);
-		std::cout << "#vert " << model.vertsSize() << " #faces " << model.facesSize() << std::endl;
+		Model* model=new Model(dir);
+		std::cout << "#vert " << model->vertsSize() << " #faces " << model->facesSize() << std::endl;
 
 		image = new PNGImage(width, height, PNGType::RGB);
+
+		model->setScale(width / 2, height / 2);
 		//Painter paint(image);
-		Render render = Render(image,model.getTriangles(width/2,height/2));
-			//paint.polygon(model.verts(model.face(i).at(0)),red , width / 2, height /2);
-			render.Draw_triangle();
-
-		/*Point2dF start(width / 2, height / 2);
-		for (int i = 1; i < 18; i++){
-			Point2dF end(width / 2 + 200 * cos(i * 2 * 3.14 / 17), height / 2 + 200 * sin(i * 2 * 3.14 / 17));
-			paint.lineWu(start,end,white);
-		}*/
-
+		Render render = Render(image,model);
+		render.setCamera(Point3dF(0, 0, 1));
+		render.setLight(Point3dF(0, 0, 1));
+		render.renderScene();
 		//image->flip_vertically();
 		image->rotate();
 		image->saveImage("output.png");

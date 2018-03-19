@@ -102,7 +102,69 @@ std::vector<Point3dF> Model::verts(Point3dI i)
 	return v;
 }
 
-Triangle Model::getTriangle(int i, float scaleX, float scaleY)
+std::vector<Point3dF> Model::vertsN(Point3dI i)
+{
+	std::vector<Point3dF> v;
+	v.push_back(nvertices.at(i.x));
+	v.push_back(nvertices.at(i.y));
+	v.push_back(nvertices.at(i.z));
+	return v;
+}
+
+std::vector<Point3dF> Model::vertsT(Point3dI i)
+{
+	std::vector<Point3dF> v;
+	v.push_back(tvertices.at(i.x));
+	v.push_back(tvertices.at(i.y));
+	v.push_back(tvertices.at(i.z));
+	return v;
+}
+
+std::vector<Triangle> Model::getTrianglesN()
+{
+	std::vector<Triangle> triangles;
+	for (int i = 0; i < faces.size(); i++) {
+		triangles.push_back(getTriangleN(i));
+	}
+	return triangles;
+}
+
+std::vector<Triangle> Model::getTrianglesT()
+{
+	std::vector<Triangle> triangles;
+	for (int i = 0; i < faces.size(); i++) {
+		triangles.push_back(getTriangleT(i));
+	}
+	return triangles;
+}
+
+void Model::setScale(float _scaleX, float _scaleY)
+{
+	scaleX = _scaleX;
+	scaleY = _scaleY;
+}
+
+Triangle Model::getTriangleN(int i)
+{
+	std::vector<Point3dF> v = vertsN(face(i).at(2));
+	for (int i = 0; i < 3; i++) {
+		v.at(i).x *= scaleX;
+		v.at(i).y *= scaleY;
+	}
+	return Triangle(v.at(0), v.at(1), v.at(2));
+}
+
+Triangle Model::getTriangleT(int i)
+{
+	std::vector<Point3dF> v = vertsT(face(i).at(1));
+	for (int i = 0; i < 3; i++) {
+		v.at(i).x *= scaleX;
+		v.at(i).y *= scaleY;
+	}
+	return Triangle(v.at(0), v.at(1), v.at(2));
+}
+
+Triangle Model::getTriangleV(int i)
 {
 	std::vector<Point3dF> v = verts(face(i).at(0));
 	for (int i = 0; i < 3; i++) {
@@ -112,11 +174,11 @@ Triangle Model::getTriangle(int i, float scaleX, float scaleY)
 	return Triangle(v.at(0), v.at(1), v.at(2));
 }
 
-std::vector<Triangle> Model::getTriangles(float scaleX, float scaleY)
+std::vector<Triangle> Model::getTrianglesV()
 {
 	std::vector<Triangle> triangles;
 	for (int i = 0; i < faces.size(); i++) {
-		triangles.push_back(getTriangle(i,scaleX,scaleY));
+		triangles.push_back(getTriangleV(i));
 	}
 	return triangles;
 }

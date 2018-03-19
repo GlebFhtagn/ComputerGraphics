@@ -21,8 +21,6 @@ void Painter::line(Point2dF p0, Point2dF p1, PNGColor color)
 		image->setPixel(x, y, color);
 	}
 }
-
-
 void Painter::lineB(Point2dF p0, Point2dF p1, PNGColor color)
 {
 	bool steep = false;
@@ -55,7 +53,6 @@ void Painter::lineB(Point2dF p0, Point2dF p1, PNGColor color)
 		}
 	}
 }
-
 void Painter::lineWu(Point2dF p0, Point2dF p1, PNGColor color)
 {
 	bool steep = false;
@@ -90,7 +87,6 @@ void Painter::lineWu(Point2dF p0, Point2dF p1, PNGColor color)
 		}
 	}
 }
-
 void Painter::polygon(std::vector<Point3dF> v, PNGColor color, float scaleX, float scaleY)
 {
 	for (int i = 0; i < v.size(); i++) {

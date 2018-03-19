@@ -37,6 +37,7 @@
     <ClCompile Include="tgaimage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="output.png" />
     <Image Include="output.tga" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
