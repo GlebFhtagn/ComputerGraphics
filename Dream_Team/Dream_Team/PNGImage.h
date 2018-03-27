@@ -35,5 +35,7 @@ private:
 	unsigned int width;
 	unsigned int heigth;
 	void swap_pixels();
+	int scaleX;
+	int scaleY;
 };
 

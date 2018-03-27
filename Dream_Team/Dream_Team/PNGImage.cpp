@@ -64,7 +64,7 @@ PNGColor PNGImage::getColor(int i, int j)
 //	if (!((i >= 0 && i < width) && (j >= 0 && j < heigth))) return;
 	//int id = i*heigth * 4 + j * 4;
 	int id = (heigth - j - 1)*heigth * 4 + i * 4;
-	//int id = (j+heigth/2)*width * 4 + (i+width/2) * 4;
+	//int id = (j*scaleY+heigth/2)*width * 4 + (i*scaleX+width/2) * 4;
 	return PNGColor(data[id+3], data[id], data[id + 1] , data[id + 2]);
 }
 

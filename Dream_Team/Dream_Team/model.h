@@ -19,7 +19,6 @@ public:
 	std::vector<Triangle> getTrianglesV();
 	std::vector<Triangle> getTrianglesN();
 	std::vector<Triangle> getTrianglesT();
-	void setScale(float _scaleX, float _scaleY);
 	PNGColor getColor(int x,int y);
 
 private:
@@ -27,8 +26,6 @@ private:
 	std::vector<std::vector<Point3dI>> faces;
 	std::vector<Point3dF> nvertices;
 	std::vector<Point2dF> tvertices;
-	float scaleX;
-	float scaleY;
 	PNGImage* texture;
 
 	Triangle getTriangleV(int i);

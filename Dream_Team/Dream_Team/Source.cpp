@@ -21,7 +21,7 @@ int main() {
 
 		image = new PNGImage(width, height, PNGType::RGB);
 
-		model->setScale(width / 2, height / 2);
+		//model->setScale(width / 2, height / 2);
 		//Painter paint(image);
 		Render render = Render(image,model);
 		render.setCamera(Point3dF(0, 0, 1));
