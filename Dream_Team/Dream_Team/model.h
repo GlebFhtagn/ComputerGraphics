@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "geometry.h"
+#include "PNGImage.h"
 class Model {
 public:
 	Model(const char* path);
@@ -19,6 +20,7 @@ public:
 	std::vector<Triangle> getTrianglesN();
 	std::vector<Triangle> getTrianglesT();
 	void setScale(float _scaleX, float _scaleY);
+	PNGColor getColor(int x,int y);
 
 private:
 	std::vector<Point3dF> vertices;
@@ -27,8 +29,10 @@ private:
 	std::vector<Point2dF> tvertices;
 	float scaleX;
 	float scaleY;
+	PNGImage* texture;
 
 	Triangle getTriangleV(int i);
 	Triangle getTriangleN(int i);
 	Triangle getTriangleT(int i);
+
 };

@@ -15,7 +15,7 @@ const int height = 800;
 PNGImage* image = NULL;
 
 int main() {
-
+	
 		Model* model=new Model(dir);
 		std::cout << "#vert " << model->vertsSize() << " #faces " << model->facesSize() << std::endl;
 
@@ -30,9 +30,12 @@ int main() {
 		//image->flip_vertically();
 		image->rotate();
 		image->saveImage("output.png");
-
+		/*
+	image = PNGImage::openImage("output.png");
+	image->saveImage("output1.png");
+	*/
 	system("pause");
-
+	
 	return 0;
 }
 

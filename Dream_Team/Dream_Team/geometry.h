@@ -136,7 +136,7 @@ struct Triangle {
 
 	float getAngle(Point3dF v)
 	{
-		return (((a-c)/ (b-c)) ^ v) / (((a - c) / (b - c)).getNorm()*v.getNorm());
+		return (((a - c) / (b - c)) ^ v) / (((a - c) / (b - c)).getNorm()*v.getNorm());
 	}
 
 	Point3dF getNormal()

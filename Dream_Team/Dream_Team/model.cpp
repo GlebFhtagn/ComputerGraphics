@@ -5,6 +5,8 @@
 
 Model::Model(const char* path) {
 
+	texture = PNGImage::openImage("texture.png");
+
 	std::ifstream input(path);
 	std::string str;
 	Point3dF point3d;
@@ -144,6 +146,11 @@ void Model::setScale(float _scaleX, float _scaleY)
 	scaleY = _scaleY;
 }
 
+PNGColor Model::getColor(int x, int y)
+{
+	return texture->getColor(x+texture->get_width()/2, y+texture->get_height() / 2);
+}
+
 Triangle Model::getTriangleN(int i)
 {
 	std::vector<Point3dF> v = vertsN(face(i).at(2));
@@ -158,8 +165,8 @@ Triangle Model::getTriangleT(int i)
 {
 	std::vector<Point3dF> v = vertsT(face(i).at(1));
 	for (int i = 0; i < 3; i++) {
-		v.at(i).x *= scaleX;
-		v.at(i).y *= scaleY;
+		v.at(i).x *= texture->get_width() / 2;
+		v.at(i).y *= texture->get_height() / 2;
 	}
 	return Triangle(v.at(0), v.at(1), v.at(2));
 }

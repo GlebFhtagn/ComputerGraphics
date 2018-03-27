@@ -21,8 +21,9 @@ class PNGImage
 {
 public:
 	PNGImage(int _width, int _height, PNGType type);
+	PNGImage(std::vector<unsigned char> _data,int _width, int _height, PNGType type);
 	~PNGImage();
-	void openImage(const char* path);
+	static PNGImage* openImage(const char* path);
 	void saveImage(const char* path);
 	void setPixel(int i, int j, PNGColor color);
 	PNGColor getColor(int i, int j);
@@ -31,8 +32,8 @@ public:
 	void rotate();
 private:
 	std::vector<unsigned char> data;
-	int width;
-	int heigth;
+	unsigned int width;
+	unsigned int heigth;
 	void swap_pixels();
 };
 
