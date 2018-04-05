@@ -48,6 +48,10 @@ void Render::setLight(Point3dF _light)
 	light = _light;
 }
 
+float Render::getAngle(Point3dF v1, Point3dF v2)
+{
+	return ((v1.x*v2.x + v1.y*v2.y + v1.z*v2.z) / (sqrt(v1.x*v1.x + v1.y*v1.y + v1.z*v1.z) * sqrt(v2.x*v2.x + v2.y*v2.y + v2.z*v2.z)));
+}
 
 void Render::renderScene()
 {
@@ -59,11 +63,12 @@ void Render::renderScene()
 	std::vector<Triangle> polygons_n = model->getTrianglesN();
 	Point3dF min, max, barCoord, zero;
 	PNGColor color(255,255,255);
+
 	for (int i = 0; i < polygons.size(); i++) {
 		angle = acos(polygons.at(i).getAngle(v));
 		if (angle <= M_PI/2) {
 
-			float test_angle = polygons.at(i).getAngle(light);
+			
 			Triangle test = polygons.at(i);
 			test.a = test.a * 400;
 			test.b = test.b * 400;
@@ -84,7 +89,17 @@ void Render::renderScene()
 						if (z > zBuffer[(y + image->get_height() / 2)*image->get_width() + x + image->get_width() / 2]) {
 							Point3dF tx(polygons_t.at(i).a.x*1024, polygons_t.at(i).b.x * 1024, polygons_t.at(i).c.x * 1024);
 							Point3dF ty(polygons_t.at(i).a.y * 1024, polygons_t.at(i).b.y * 1024, polygons_t.at(i).c.y * 1024);
-								image->setPixel(x + image->get_width() / 2, y + image->get_height() / 2, model->getColor((tx^barCoord),(ty^barCoord))*test_angle);
+							Point3dF nx(polygons_n.at(i).a.x * 1024, polygons_n.at(i).b.x * 1024, polygons_n.at(i).c.x * 1024);
+							Point3dF ny(polygons_n.at(i).a.y * 1024, polygons_n.at(i).b.y * 1024, polygons_n.at(i).c.y * 1024);
+							Point3dF nz(polygons_n.at(i).a.z * 1024, polygons_n.at(i).b.z * 1024, polygons_n.at(i).c.z * 1024);
+							Point3dF n((nx^barCoord), (ny^barCoord), (nz^barCoord));
+							float test_angle = getAngle(n,v);
+							PNGColor new_color = model->getColor((tx^barCoord), (ty^barCoord));
+							test_angle = abs(test_angle);
+							new_color.r *= test_angle;
+							new_color.g *= test_angle;
+							new_color.b *= test_angle;
+								image->setPixel(x + image->get_width() / 2, y + image->get_height() / 2, new_color);					
 							//image->setPixel(x+ image->get_width()/2, y + image->get_height() / 2, color*test_angle);
 								zBuffer[(y + image->get_height() / 2)*image->get_width() + x + image->get_width() / 2] = z;
 						}
@@ -94,6 +109,8 @@ void Render::renderScene()
 		}
 	}
 }
+
+
 
 PNGImage * Render::getImage()
 {

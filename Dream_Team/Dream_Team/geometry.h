@@ -123,6 +123,7 @@ struct Point3d {
 	{
 		return Point3d<float>(x / getNorm(), y / getNorm(), z / getNorm());
 	}
+
 };
 
 typedef Point2d<int> Point2dI;

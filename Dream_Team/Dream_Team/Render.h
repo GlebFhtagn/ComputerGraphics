@@ -20,6 +20,7 @@ public:
 	void setModel(Model* _model);
 	void setLight(Point3dF _light);
 	void renderScene();
+	float getAngle(Point3dF v1, Point3dF v2);
 	PNGImage* getImage();
 
 private:
