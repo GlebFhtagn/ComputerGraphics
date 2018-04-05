@@ -112,9 +112,10 @@ struct Point3d {
 		return Point3d<t>(a.x - b.x, a.y - b.y, a.z - b.z);
 	}
 
-	Point2d<t> from3dTo2d() {
-		return Point2d<t>(x,y);
+	Point3d<float> to2D() {
+		return Point3d<float>(x / z, y / z, 1f);
 	}
+
 	float getNorm() {
 		return sqrt(pow(x,2.0)+ pow(y, 2.0)+ pow(z, 2.0));
 	}

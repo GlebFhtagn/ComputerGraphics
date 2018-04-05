@@ -30,6 +30,7 @@ public:
 	int get_width();
 	int get_height();
 	void rotate();
+	std::vector<unsigned char> getData();
 private:
 	std::vector<unsigned char> data;
 	unsigned int width;

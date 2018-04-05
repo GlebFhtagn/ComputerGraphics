@@ -87,9 +87,9 @@ void Painter::lineWu(Point2dF p0, Point2dF p1, PNGColor color)
 		}
 	}
 }
-void Painter::polygon(std::vector<Point3dF> v, PNGColor color, float scaleX, float scaleY)
-{
-	for (int i = 0; i < v.size(); i++) {
-		lineWu((v.at(i).from3dTo2d()*scaleX)+centre, (v.at((i+1)%v.size()).from3dTo2d()*scaleY)+centre, color);
-	}
-}
+//void Painter::polygon(std::vector<Point3dF> v, PNGColor color, float scaleX, float scaleY)
+//{
+//	for (int i = 0; i < v.size(); i++) {
+//		lineWu((v.at(i).from3dTo2d()*scaleX)+centre, (v.at((i+1)%v.size()).from3dTo2d()*scaleY)+centre, color);
+//	}
+//}

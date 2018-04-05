@@ -83,6 +83,11 @@ void PNGImage::rotate()
 	//swap_pixels();
 }
 
+std::vector<unsigned char> PNGImage::getData()
+{
+	return std::vector<unsigned char>(data);
+}
+
 void PNGImage::swap_pixels()
 {
 	std::vector<unsigned char> vec_buff(heigth*width*4);
