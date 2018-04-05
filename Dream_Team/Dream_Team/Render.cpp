@@ -41,6 +41,7 @@ void Render::renderScene()
 	memset(zBuffer, 0, sizeof(float));
 	std::vector<Triangle> polygons = model->getTrianglesV();
 	std::vector<Triangle> polygons_t = model->getTrianglesT();
+	std::vector<Triangle> polygons_n = model->getTrianglesN();
 	Point3dF min, max, barCoord, zero;
 	PNGColor color(255,255,255);
 	for (int i = 0; i < polygons.size(); i++) {
@@ -72,6 +73,10 @@ void Render::renderScene()
 							Point3dF tx(polygons_t.at(i).a.x*512, polygons_t.at(i).b.x * 512, polygons_t.at(i).c.x * 512);
 							Point3dF ty(polygons_t.at(i).a.y * 512, polygons_t.at(i).b.y * 512, polygons_t.at(i).c.y * 512);
 								image->setPixel(x + image->get_width() / 2, y + image->get_height() / 2, model->getColor((tx^barCoord)+512,(ty^barCoord)+512));
+							Point3dF nx(polygons_n.at(i).a.x * 512, polygons_n.at(i).b.x * 512, polygons_n.at(i).c.x * 512);
+							Point3dF ny(polygons_n.at(i).a.y * 512, polygons_n.at(i).b.y * 512, polygons_n.at(i).c.y * 512);
+							Point3dF nz(polygons_n.at(i).a.z * 512, polygons_n.at(i).b.z * 512, polygons_n.at(i).c.z * 512);
+							
 							//image->setPixel(x+ image->get_width()/2, y + image->get_height() / 2, color*test_angle);
 								zBuffer[(y + image->get_height() / 2)*image->get_width() + x + image->get_width() / 2] = z;
 						}
